@@ -19,7 +19,7 @@ import openfl.system.System;
 import openfl.geom.Rectangle;
 
 import lime.utils.Assets;
-import openfl.media.Sound;
+import flash.media.Sound;
 
 #if sys
 import sys.io.File;
