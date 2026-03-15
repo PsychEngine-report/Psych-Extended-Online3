@@ -44,7 +44,9 @@ class Main extends Sprite
 
 	public static var fpsVar:FPS;
 
-	public static var PSYCH_ONLINE_VERSION(default, null):String = null;
+	PSYCH_ONLINE_VERSION = FlxG.stage.application.meta.get('version');
+	if (PSYCH_ONLINE_VERSION == null)
+    	PSYCH_ONLINE_VERSION = "0.14.2";
 	public static var PSYCH_EXTENDED_VERSION(default, null):String = "0.1.0";
 	public static final CLIENT_PROTOCOL:Float = 11;
 	public static final NETWORK_PROTOCOL:Float = 8;
@@ -113,27 +115,27 @@ class Main extends Sprite
 		#end
 		backend.CrashHandler.init();
 
-		#if ios
+		#if (ios || android)
 		CoolUtil.showPopUp("trace 1", "none");
 		#end
 
 		if (stage != null)
 		{
-			#if ios
+			#if (ios || android)
 			CoolUtil.showPopUp("trace -1", "none");
 			#end
 			init();
-			#if ios
+			#if (ios || android)
 			CoolUtil.showPopUp("trace -4", "none");
-			#end
+			#if (ios || android)
 		}
 		else
 		{
-			#if ios
+			#if (ios || android)
 			CoolUtil.showPopUp("trace -2", "none");
 			#end
 			addEventListener(Event.ADDED_TO_STAGE, init);
-			#if ios
+			#if (ios || android)
 			CoolUtil.showPopUp("trace -3", "none");
 			#end
 		}
